@@ -2,6 +2,7 @@ package org.launchcode.techjobs.console;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 /**
@@ -11,7 +12,7 @@ public class TechJobs {
 
     private static Scanner in = new Scanner(System.in);
 
-    public static void main (String[] args) {
+    public static void main(String[] args) {
 
         // Initialize our field map with key/name pairs
         HashMap<String, String> columnChoices = new HashMap<>();
@@ -61,7 +62,7 @@ public class TechJobs {
                 String searchTerm = in.nextLine();
 
                 if (searchField.equals("all")) {
-                    System.out.println("Search all fields not yet implemented.");
+                    printJobs(JobData.findByValue(searchTerm)); //put searchTerm in this parameter
                 } else {
                     printJobs(JobData.findByColumnAndValue(searchField, searchTerm));
                 }
@@ -103,14 +104,61 @@ public class TechJobs {
                 validChoice = true;
             }
 
-        } while(!validChoice);
+        } while (!validChoice);
 
         return choiceKeys[choiceIdx];
     }
 
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
+        //iterate over an ArrayList of jobs
+        //while each job is a HashMap
+        //create a nested loop to loop over each HashMap
 
-        System.out.println("printJobs is not implemented yet");
+//        String name = ;
+////        for (int job = 0; job < someJobs.size(); job++) {
+////            for (int b = a + 1; b < someJobs.size(); b++) {
+////                for (String key : someJobs.get(job).values()) {
+//        System.out.println(someJobs.get(name));
+
+        if (someJobs.isEmpty()) {
+            System.out.println("Search did not produce any results");
+        } else {
+            for (HashMap<String, String> entry : someJobs) {
+                System.out.println("*******");
+                {
+
+                    for (String key : entry.keySet()) {
+                        System.out.println(key + ": " + entry.get(key));
+                    }
+                }
+            }
+
+        }
     }
 }
+//        for (int i = 0; i < someJobs.size(); i++) {
+//            for (String key : someJobs.get(i).keySet()) {
+//                for (String value : someJobs.get(i).values()) {
+//                    System.out.println(key + value);
+//
+//                    }
+//                }
+//            }
+//        }
+//
+
+//        for (HashMap<String, String>map: someJobs){
+//            for (String values: someJobs.get())
+//            String job = map.get(someJobs);
+//            System.out.println(values);
+
+
+//        ArrayList[] someJobKeys = new ArrayList[someJobs.size()}];
+//        Integer i = 0;
+//        for (String someJobKey: someJobs.keySet()) {
+//            someJobKeys[i] = someJobKey;
+//            i++;
+//        for (Map.Entry<String, String> someJob : someJobs.entrySet()) {
+//            System.out.println(someJob.getKey() + someJob.getValue());
+//                }
