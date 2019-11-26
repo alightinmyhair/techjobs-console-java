@@ -99,12 +99,14 @@ public class JobData {
             for (String key : job.keySet()) {
                 String aValue = job.get(key).toLowerCase();
                 if (aValue.contains(value.toLowerCase())) {
-                    jobs.add(job);
+                    if (!jobs.contains(job)) {
+                        jobs.add(job);
+                    }
                 }
 
             }
-        }
 
+        }
         return jobs;
     }
 
